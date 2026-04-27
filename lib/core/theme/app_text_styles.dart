@@ -8,6 +8,32 @@ class AppTextStyles {
     fontWeight: FontWeight.w900,
     color: AppColors.orange,
   );
+  static TextStyle font16orangeRegular = const TextStyle(
+    fontSize: 16,
+    color: AppColors.orange,
+    fontFamily: 'PPMori',
+    fontWeight: FontWeight.w800,
+  );
+
+  static TextStyle font14w500Black = const TextStyle(
+    fontSize: 14,
+    color: AppColors.black,
+    fontFamily: 'PPMori',
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle font14PurpleMedium = const TextStyle(
+    fontSize: 14,
+    color: AppColors.gradientBottom,
+    fontFamily: 'PPMori',
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle font16greyregular = const TextStyle(
+    fontSize: 16,
+    color: AppColors.grey,
+    fontFamily: 'PPMori',
+    fontWeight: FontWeight.w400,
+  );
 
   static TextStyle font33SemiBoldWhite = const TextStyle(
     fontSize: 33,
@@ -21,12 +47,17 @@ class AppTextStyles {
     fontFamily: 'PPMori',
     fontWeight: FontWeight.w800,
   );
+  static TextStyle font30SemiBoldOrange = const TextStyle(
+    fontSize: 35,
+    color: AppColors.orange,
+    fontFamily: 'PPMori',
+    fontWeight: FontWeight.w800,
+  );
   static TextStyle discount = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w200,
     color: AppColors.white,
     fontFamily: 'PPMori',
-
   );
 
   static TextStyle font24w400White = const TextStyle(
@@ -50,8 +81,14 @@ class AppTextStyles {
     fontFamily: 'PPMori',
   );
 
-   static TextStyle font12w400Grey = const TextStyle(
+  static TextStyle font12w400Grey = const TextStyle(
     fontSize: 12,
+    color: AppColors.greyDark,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'PPMori',
+  );
+  static TextStyle font15w400Grey = const TextStyle(
+    fontSize: 15,
     color: AppColors.greyDark,
     fontWeight: FontWeight.w400,
     fontFamily: 'PPMori',
