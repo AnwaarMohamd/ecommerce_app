@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,15 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
           return GestureDetector(
             onTap: () {
               setState(() => index = i);
+              if (i == 0) {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  AppRoutes.home,
+                  (route) => false,
+                );
+              } else if (i == 1) {
+                Navigator.pushNamed(context, AppRoutes.cart);
+              }
             },
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 250),
@@ -64,7 +74,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                   if (isSelected) ...[
                     const SizedBox(width: 6),
                     Text(
-                      ["Home", "Cart", "Fav", "Profile"][i],
+                      ['Home', 'Cart', 'Fav', 'Profile'][i],
                       style: const TextStyle(
                         color: AppColors.orangeDark,
                         fontWeight: FontWeight.w600,

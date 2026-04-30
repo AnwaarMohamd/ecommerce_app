@@ -1,5 +1,8 @@
+import 'package:ecommerce_app/core/routing/app_routes.dart';
+import 'package:ecommerce_app/features/cart/logic/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
   final String title;
@@ -35,21 +38,15 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Image
           Center(child: Image.asset(image, height: 70, fit: BoxFit.contain)),
-          Gap(10),
-
-          /// Title
+          const Gap(10),
           Text(
             title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
-
-          Gap(2),
-
-          /// Price
+          const Gap(2),
           Text(
             price,
             style: const TextStyle(
@@ -58,16 +55,20 @@ class ProductCard extends StatelessWidget {
               color: Colors.deepPurple,
             ),
           ),
-          Gap(2),
-
-
-
-          /// 🛒 Add to cart button
+          const Gap(2),
           SizedBox(
             width: double.infinity,
             height: 27,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<CartProvider>().addProduct(
+                      id: title,
+                      name: title,
+                      image: image,
+                      price: _parsePrice(price),
+                    );
+                Navigator.pushNamed(context, AppRoutes.cart);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,
                 shape: RoundedRectangleBorder(
@@ -75,11 +76,19 @@ class ProductCard extends StatelessWidget {
                 ),
                 elevation: 2,
               ),
-              child: const Text("Shop Now", style: TextStyle(fontSize: 12, color: Colors.white)),
+              child: const Text(
+                'Shop Now',
+                style: TextStyle(fontSize: 12, color: Colors.white),
+              ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  double _parsePrice(String value) {
+    final normalized = value.replaceAll(RegExp(r'[^0-9.]'), '');
+    return double.tryParse(normalized) ?? 0;
   }
 }

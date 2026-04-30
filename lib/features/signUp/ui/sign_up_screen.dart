@@ -1,8 +1,8 @@
+import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/theme/app_text_styles.dart';
 import 'package:ecommerce_app/core/widgets/app_button.dart';
 import 'package:ecommerce_app/core/widgets/app_header.dart';
 import 'package:ecommerce_app/core/widgets/app_text_form_field.dart';
-import 'package:ecommerce_app/features/login/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -19,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordHidden = true;
+
   @override
   void dispose() {
     _usernameController.dispose();
@@ -40,28 +41,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                /// Header
                 AppHeader(
-                  title: "Create Account",
-                  subTitle: "Sign up to get started!",
+                  title: 'Create Account',
+                  subTitle: 'Sign up to get started!',
                 ),
-                Gap(30),
-
-                /// Form Fields
+                const Gap(30),
                 AppTextFormField(
-                  hintText: "Username",
+                  hintText: 'Username',
                   controller: _usernameController,
                 ),
-                Gap(25),
-
+                const Gap(25),
                 AppTextFormField(
-                  hintText: "Email",
+                  hintText: 'Email',
                   isEmailField: true,
                   controller: _emailController,
                 ),
-                Gap(25),
+                const Gap(25),
                 AppTextFormField(
-                  hintText: "Password",
+                  hintText: 'Password',
                   isObscureText: isPasswordHidden,
                   controller: _passwordController,
                   suffixIcon: IconButton(
@@ -77,25 +74,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                   ),
                 ),
-                Gap(50),
-
-                ///Button
+                const Gap(50),
                 AppButton(
-                  text: "Sign Up",
+                  text: 'Sign Up',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print("UserName: ${_usernameController.text}");
-                      print("Email: ${_emailController.text}");
-                      print("Password: ${_passwordController.text}");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
-                    );
+                      debugPrint('UserName: ${_usernameController.text}');
+                      debugPrint('Email: ${_emailController.text}');
+                      debugPrint('Password: ${_passwordController.text}');
+                      Navigator.pushNamed(context, AppRoutes.login);
                     }
                   },
                 ),
-                Gap(25),
+                const Gap(25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -105,12 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.login);
                       },
                       child: Text(
                         'Sign In',

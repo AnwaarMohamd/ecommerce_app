@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:ecommerce_app/core/constants/app_assets.dart';
+import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:ecommerce_app/core/theme/app_text_styles.dart';
 import 'package:ecommerce_app/core/widgets/app_button.dart';
-import 'package:ecommerce_app/features/home/ui/home_screen.dart';
-import 'package:ecommerce_app/features/signUp/ui/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -166,12 +163,7 @@ class OnboardingBody extends StatelessWidget {
                   AppButton(
                     text: "Get Started",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, AppRoutes.signUp);
                     },
                   ),
 
