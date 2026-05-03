@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:ecommerce_app/features/cart/data/cart_item.dart';
 import 'package:ecommerce_app/features/cart/logic/cart_provider.dart';
 import 'package:ecommerce_app/features/cart/ui/widgets/cart_item_card.dart';
 import 'package:flutter/material.dart';

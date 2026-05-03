@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/features/cart/logic/cart_provider.dart';
 import 'package:ecommerce_app/features/cart/ui/cart_screen.dart';
+import 'package:ecommerce_app/features/home/data/product_model.dart';
 import 'package:ecommerce_app/features/home/ui/home_screen.dart';
+import 'package:ecommerce_app/features/home/ui/product_detail_screen.dart';
 import 'package:ecommerce_app/features/login/ui/login_screen.dart';
 import 'package:ecommerce_app/features/onBoarding/ui/onboarding_screen.dart';
 import 'package:ecommerce_app/features/signUp/ui/sign_up_screen.dart';
@@ -40,6 +42,25 @@ class MainApp extends StatelessWidget {
               AppRoutes.signUp: (_) => const SignUpScreen(),
               AppRoutes.home: (_) => HomeScreen(),
               AppRoutes.cart: (_) => const CartScreen(),
+            },
+            onGenerateRoute: (settings) {
+              if (settings.name == AppRoutes.productDetails) {
+                final product = settings.arguments as ProductModel?;
+
+                if (product == null) {
+                  return MaterialPageRoute(builder: (_) => HomeScreen());
+                }
+
+                return MaterialPageRoute(
+                  builder: (_) => ProductDetailScreen(
+                    title: product.title,
+                    price: product.price,
+                    image: product.image,
+                    description: product.description,
+                  ),
+                );
+              }
+              return null;
             },
           );
         },

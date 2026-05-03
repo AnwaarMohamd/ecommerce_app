@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/theme/app_colors.dart';
+import 'package:ecommerce_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -7,40 +8,57 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            height: 50,
-            decoration: BoxDecoration(
-            
-              color: AppColors.grey,
-              borderRadius: BorderRadius.circular(25),
+        /// Top Row
+        Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Good morning',
+                    style: AppTextStyles.font16greyregular.copyWith(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Discover latest deals',
+                    style: AppTextStyles.font24w400White.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: const Row(
-              children: [
-                Icon(Icons.search , color: AppColors.greyDark),
-                Gap(8),
-                Text("Search products" , style: TextStyle(color: AppColors.greyDark)),
-              ],
-            ),
-          ),
-        ),
-        Gap(10),
-        Stack(
-          children: const [
-            CircleAvatar(
-              radius: 20,
-              backgroundColor: AppColors.grey,
-              child: Icon(Icons.notifications_outlined, color: AppColors.greyDark),
-            ),
-            Positioned(
-              right: 2,
-              top: 2,
-              child: CircleAvatar(radius: 4, backgroundColor: AppColors.red),
+            const CircleAvatar(
+              radius: 22,
+              backgroundColor: Colors.white,
+              child: Icon(Icons.person, color: AppColors.gradientBottom),
             ),
           ],
+        ),
+
+        const SizedBox(height: 20),
+
+        /// ✅ Search Field (clean & normal)
+        TextField(
+          decoration: InputDecoration(
+            hintText: 'Search products...',
+            hintStyle: TextStyle(color: Colors.grey.shade500),
+            prefixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.tune),
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(vertical: 14),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide.none,
+            ),
+          ),
         ),
       ],
     );

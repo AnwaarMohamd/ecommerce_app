@@ -7,8 +7,13 @@ environment:
   sdk: ^3.10.8
 
 dependencies:
+  cloud_firestore: ^6.3.0
+  equatable: ^2.0.8
+  firebase_auth: ^6.4.0
+  firebase_core: ^4.7.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_screenutil: ^5.9.3
   gap: ^3.0.1
   provider: ^6.1.5+1

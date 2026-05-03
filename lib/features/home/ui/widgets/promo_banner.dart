@@ -10,66 +10,64 @@ class PromoBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
+      height: 190,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Colors.purple, Colors.deepPurple],
+          colors: [AppColors.gradientTop, AppColors.gradientBottom],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(28),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.gradientBottom.withOpacity(0.25),
+            blurRadius: 20,
+            offset: const Offset(0, 12),
+          ),
+        ],
       ),
       child: Stack(
         children: [
           Positioned(
-            left: 16,
+            top: -16,
+            right: -10,
+            child: Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                color: AppColors.white.withOpacity(0.08),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 18,
             top: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "CYBER\nLINIO",
-                  style: TextStyle(
-                    color: AppColors.orange,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                    height: 1,
-                  ),
+                Text(
+                  'Mega Sale',
+                  style: AppTextStyles.font25SemiBoldWhite.copyWith(fontSize: 28),
                 ),
                 const Gap(8),
-                Row(
-                  children: [
-                    Text(
-                      "40%",
-                      style: AppTextStyles.font25SemiBoldWhite.copyWith(
-                        height: 0.2,
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                    Text("DSCNT", style: AppTextStyles.discount),
-                  ],
-                ),
-    
-                const Gap(6),
                 Text(
-                  "in technology",
-                  style: AppTextStyles.font18w400White.copyWith(height: 0.2),
+                  'Up to 60% off on top electronics',
+                  style: AppTextStyles.font18w400White.copyWith(height: 1.4),
                 ),
-                const Gap(13),
-    
+                const Gap(12),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
-                    "FREE SHIPPING",
+                    'Free delivery',
                     style: TextStyle(
-                      color: AppColors.orangeDark,
+                      color: AppColors.gradientBottom,
                       fontSize: 13,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
@@ -77,26 +75,17 @@ class PromoBanner extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 90,
-            bottom: 30,
-            child: Image.asset(AppAssets.whiteZoom, height: 150),
-          ),
-    
-          Positioned(
-            right: 20,
+            right: 10,
             bottom: 0,
-            child: Image.asset(AppAssets.switchDevice, height: 150),
+            child: Image.asset(AppAssets.switchDevice, height: 160),
           ),
           Positioned(
-            right: 0,
-            bottom: 0,
-            child: Image.asset(AppAssets.airpods, height: 100),
+            left: 80,
+            bottom: -10,
+            child: Image.asset(AppAssets.airpods, height: 110),
           ),
-
-          
         ],
       ),
-  
     );
   }
 }
