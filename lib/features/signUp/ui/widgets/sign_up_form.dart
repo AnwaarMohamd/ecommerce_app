@@ -3,8 +3,11 @@ import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:ecommerce_app/core/widgets/app_button.dart';
 import 'package:ecommerce_app/core/widgets/app_header.dart';
 import 'package:ecommerce_app/core/widgets/app_text_form_field.dart';
+import 'package:ecommerce_app/features/auth/logic/cubit/auth_cubit.dart';
+import 'package:ecommerce_app/features/auth/logic/cubit/auth_state.dart';
 import 'package:ecommerce_app/features/signUp/ui/widgets/sign_up_footer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -33,11 +36,10 @@ class _SignUpFormState extends State<SignUpForm> {
 
   void _signUp(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      debugPrint('UserName: ${_usernameController.text}');
-      debugPrint('Email: ${_emailController.text}');
-      debugPrint('Password: ${_passwordController.text}');
-
-      Navigator.pushNamed(context, AppRoutes.login);
+      context.read<AuthCubit>().register(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
     }
   }
 
@@ -101,11 +103,33 @@ class _SignUpFormState extends State<SignUpForm> {
 
             Gap(32),
 
-            AppButton(
-              text: 'Sign Up',
-              backgroundColor: AppColors.secondary,
-              textColor: AppColors.white,
-              onPressed: () => _signUp(context),
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is AuthSuccess) {
+                  // بعد التسجيل → يروح الهوم
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.home,
+                    (route) => false,
+                  );
+                } else if (state is AuthError) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                }
+              },
+              builder: (context, state) {
+                if (state is AuthLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                return AppButton(
+                  text: 'Sign Up',
+                  backgroundColor: AppColors.secondary,
+                  textColor: AppColors.white,
+                  onPressed: () => _signUp(context),
+                );
+              },
             ),
 
             Gap(20),

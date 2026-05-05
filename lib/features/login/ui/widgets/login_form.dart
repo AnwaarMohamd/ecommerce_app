@@ -3,8 +3,12 @@ import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:ecommerce_app/core/widgets/app_button.dart';
 import 'package:ecommerce_app/core/widgets/app_header.dart';
 import 'package:ecommerce_app/core/widgets/app_text_form_field.dart';
+import 'package:ecommerce_app/features/auth/logic/cubit/auth_cubit.dart';
+import 'package:ecommerce_app/features/auth/logic/cubit/auth_state.dart';
 import 'package:ecommerce_app/features/login/ui/widgets/login_footer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -29,8 +33,10 @@ class _LoginFormState extends State<LoginForm> {
 
   void _login(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      debugPrint('Email: ${_emailController.text}');
-      Navigator.pushNamed(context, AppRoutes.home);
+      context.read<AuthCubit>().login(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
     }
   }
 
@@ -86,11 +92,32 @@ class _LoginFormState extends State<LoginForm> {
 
             const SizedBox(height: 32),
 
-            AppButton(
-              text: 'Sign In',
-              backgroundColor: AppColors.secondary,
-              textColor: AppColors.white,
-              onPressed: () => _login(context),
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is AuthSuccess) {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.home,
+                    (route) => false,
+                  );
+                } else if (state is AuthError) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                }
+              },
+              builder: (context, state) {
+                if (state is AuthLoading) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                return AppButton(
+                  text: 'Sign In',
+                  backgroundColor: AppColors.secondary,
+                  textColor: AppColors.white,
+                  onPressed: () => _login(context),
+                );
+              },
             ),
 
             const SizedBox(height: 20),
