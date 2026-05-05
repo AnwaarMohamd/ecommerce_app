@@ -16,4 +16,28 @@ class AppColors {
   static const Color greyDark = Color(0xFF757575);
   static const Color red = Color(0xFFFF0000);
   static const Color black = Color(0xFF303030);
+  static const primaryDark = Color(0xFF080B1A);
+  
+    // background cart
+    //TODO make all app look like gaming app (inhance the whole appColors)
+  static const gradientStart = Color(0xFF090D21);
+  static const gradientMiddle = Color(0xFF16123B);
+  static const gradientEnd = Color(0xFF30115A);
+
+  // glass effect
+  static Color glassWhite = Colors.white.withOpacity(0.12);
+  static Color borderWhite = Colors.white.withOpacity(0.14);
+
+  // buttons
+  static const primaryButton = Color(0xFFFFB84D);
+  static const buttonText = Color(0xFF171127);
+
+  // text
+  static Color white70 = Colors.white.withOpacity(0.7);
+  static Color white60 = Colors.white.withOpacity(0.6);
+
+  // price
+static const priceColor = Color(0xFFFFC15C);
+  // delete
+  static const danger = Color(0xFFFF7A90);
 }

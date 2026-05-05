@@ -93,4 +93,56 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontFamily: 'PPMori',
   );
+
+  static const title28 = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 28,
+    fontWeight: FontWeight.w800,
+    color: AppColors.white,
+  );
+
+  // subtitle
+  static TextStyle subtitle13 = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 13,
+    color: AppColors.white60,
+  );
+
+  // item title
+  static const itemTitle = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 15,
+    fontWeight: FontWeight.w800,
+    color: AppColors.white,
+  );
+
+  // price
+  static const price = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 15,
+    fontWeight: FontWeight.w800,
+    color: AppColors.priceColor,
+  );
+
+  // total
+  static const total = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 26,
+    fontWeight: FontWeight.w800,
+    color: AppColors.white,
+  );
+
+  // button text
+  static const button = TextStyle(
+    fontFamily: 'PPMori',
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+  );
+  // quantity text style
+static const quantity = TextStyle(
+  fontFamily: 'PPMori',
+  fontSize: 14,
+  fontWeight: FontWeight.w800,
+  color: AppColors.white,
+);
 }
