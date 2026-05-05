@@ -1,4 +1,3 @@
-// main container with gradient and provider
 import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:ecommerce_app/features/cart/logic/cart_provider.dart';
 import 'package:ecommerce_app/features/cart/ui/widgets/cart_header.dart';
@@ -14,7 +13,7 @@ class CartBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // gradient background (diagonal)
+      // main container with gradient and provider
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,

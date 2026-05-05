@@ -48,12 +48,12 @@ class PromoBanner extends StatelessWidget {
               children: [
                 Text(
                   'Mega Sale',
-                  style: AppTextStyles.font25SemiBoldWhite.copyWith(fontSize: 28),
+                  style: AppTextStyles.font16orangeRegular.copyWith(fontSize: 28),
                 ),
                 const Gap(8),
                 Text(
                   'Up to 60% off on top electronics',
-                  style: AppTextStyles.font18w400White.copyWith(height: 1.4),
+                  style: AppTextStyles.font12w400White.copyWith(height: 1.4),
                 ),
                 const Gap(12),
                 Container(

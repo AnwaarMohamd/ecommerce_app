@@ -1,9 +1,7 @@
-// header with title and count
 import 'package:ecommerce_app/core/theme/app_text_styles.dart';
 import 'package:ecommerce_app/features/cart/ui/widgets/circle_icon_buttin.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 class CartHeader extends StatelessWidget {
   final int itemCount;
 

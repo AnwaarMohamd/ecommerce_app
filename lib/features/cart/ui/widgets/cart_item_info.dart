@@ -1,4 +1,3 @@
-// item details
 import 'package:ecommerce_app/core/theme/app_text_styles.dart';
 import 'package:ecommerce_app/features/cart/data/cart_item.dart';
 import 'package:ecommerce_app/features/cart/ui/widgets/delete_button.dart';
@@ -28,7 +27,7 @@ class CartItemInfo extends StatelessWidget {
           children: [
             QuantityStepper(item: item),
             const Spacer(),
-            Text('\$${item.lineTotal}'),
+            Text('\$${item.lineTotal}' ,style: AppTextStyles.price),
           ],
         ),
       ],

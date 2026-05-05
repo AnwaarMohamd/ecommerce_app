@@ -106,10 +106,9 @@ class _SignUpFormState extends State<SignUpForm> {
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
                 if (state is AuthSuccess) {
-                  // بعد التسجيل → يروح الهوم
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    AppRoutes.home,
+                    AppRoutes.login,
                     (route) => false,
                   );
                 } else if (state is AuthError) {

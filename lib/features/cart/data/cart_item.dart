@@ -1,4 +1,5 @@
 class CartItem {
+  // Constructor for creating a cart item
   const CartItem({
     required this.id,
     required this.name,
@@ -6,15 +7,16 @@ class CartItem {
     required this.price,
     this.quantity = 1,
   });
-
   final String id;
   final String name;
   final String image;
   final double price;
   final int quantity;
 
+  // Calculates total price
   double get lineTotal => price * quantity;
 
+  // Creates a new instance with updated values (immutability pattern)
   CartItem copyWith({
     String? id,
     String? name,
@@ -31,6 +33,7 @@ class CartItem {
     );
   }
 
+  // Converts the object to JSON for storage (SharedPreferences)
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -41,6 +44,7 @@ class CartItem {
     };
   }
 
+  // Creates a CartItem object from JSON data
   factory CartItem.fromJson(Map<String, dynamic> json) {
     return CartItem(
       id: json['id'] as String,

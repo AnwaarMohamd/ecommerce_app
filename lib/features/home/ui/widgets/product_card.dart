@@ -142,7 +142,7 @@ class ProductCard extends StatelessWidget {
                   showDetails ? 'Details' : 'Add',
                   style: const TextStyle(
                     fontSize: 12,
-                    color: Colors.white, // 👈 مهم
+                    color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
