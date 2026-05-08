@@ -11,7 +11,7 @@ import 'widgets/horizontal_list.dart';
 import 'widgets/custom_bottom_nav.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

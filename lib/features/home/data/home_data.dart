@@ -19,8 +19,20 @@ class HomeData {
     ),
     ProductModel(
       title: "Sony WH-1000XM4",
-      price: "\$4,999",
+      price: "\$100",
       image: AppAssets.headSet,
+      description: "Next-level noise cancellation and premium sound quality.",
+    ),
+    ProductModel(
+      title: "Speaker",
+      price: "\$200",
+      image: AppAssets.speaker,
+      description: "Next-level noise cancellation and premium sound quality.",
+    ),
+    ProductModel(
+      title: "Switch",
+      price: "\$300",
+      image: AppAssets.switchDevice,
       description: "Next-level noise cancellation and premium sound quality.",
     ),
   ];

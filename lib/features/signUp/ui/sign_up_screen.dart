@@ -30,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SignUpHeader(),
-                    Gap(30),
+                    Gap(40),
                     SignUpForm(),
                   ],
                 ),

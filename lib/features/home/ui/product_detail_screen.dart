@@ -39,7 +39,10 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [AppColors.gradientTop, AppColors.gradientBottom],
+                          colors: [
+                            AppColors.gradientTop,
+                            AppColors.gradientBottom,
+                          ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -54,10 +57,16 @@ class ProductDetailScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
-                                icon: const Icon(Icons.arrow_back, color: AppColors.white),
+                                icon: const Icon(
+                                  Icons.arrow_back,
+                                  color: AppColors.white,
+                                ),
                                 onPressed: () => Navigator.pop(context),
                               ),
-                              const Icon(Icons.favorite_border, color: AppColors.white),
+                              const Icon(
+                                Icons.favorite_border,
+                                color: AppColors.white,
+                              ),
                             ],
                           ),
                           const Gap(14),
@@ -78,11 +87,16 @@ class ProductDetailScreen extends StatelessWidget {
                           const Gap(8),
                           Text(
                             price,
-                            style: AppTextStyles.font24w400White.copyWith(fontWeight: FontWeight.bold),
+                            style: AppTextStyles.font24w400White.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           const Gap(12),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.16),
                               borderRadius: BorderRadius.circular(20),
@@ -101,11 +115,18 @@ class ProductDetailScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Product overview', style: AppTextStyles.font30SemiBoldOrange.copyWith(fontSize: 20)),
+                          Text(
+                            'Product overview',
+                            style: AppTextStyles.font30SemiBoldOrange.copyWith(
+                              fontSize: 20,
+                            ),
+                          ),
                           const Gap(12),
                           Text(
                             description,
-                            style: AppTextStyles.font14w500Black.copyWith(height: 1.6),
+                            style: AppTextStyles.font14w500Black.copyWith(
+                              height: 1.6,
+                            ),
                           ),
                           const Gap(18),
                           Row(
@@ -117,11 +138,22 @@ class ProductDetailScreen extends StatelessWidget {
                             ],
                           ),
                           const Gap(24),
-                          Text('Features', style: AppTextStyles.font30SemiBoldOrange.copyWith(fontSize: 20)),
+                          Text(
+                            'Features',
+                            style: AppTextStyles.font30SemiBoldOrange.copyWith(
+                              fontSize: 20,
+                            ),
+                          ),
                           const Gap(12),
-                          const _FeatureText(text: 'High-performance CPU and graphics'),
-                          const _FeatureText(text: 'Wireless connectivity and long battery life'),
-                          const _FeatureText(text: 'Premium build, suitable for work and play'),
+                          const _FeatureText(
+                            text: 'High-performance CPU and graphics',
+                          ),
+                          const _FeatureText(
+                            text: 'Wireless connectivity and long battery life',
+                          ),
+                          const _FeatureText(
+                            text: 'Premium build, suitable for work and play',
+                          ),
                           const Gap(24),
                         ],
                       ),
@@ -138,11 +170,15 @@ class ProductDetailScreen extends StatelessWidget {
                 textColor: AppColors.white,
                 onPressed: () async {
                   await context.read<CartProvider>().addProduct(
-                        id: title,
-                        name: title,
-                        image: image,
-                        price: double.tryParse(price.replaceAll(RegExp(r'[^0-9.]'), '')) ?? 0,
-                      );
+                    id: title,
+                    name: title,
+                    image: image,
+                    price:
+                        double.tryParse(
+                          price.replaceAll(RegExp(r'[^0-9.]'), ''),
+                        ) ??
+                        0,
+                  );
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -181,10 +217,7 @@ class _InfoChip extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(
-        label,
-        style: AppTextStyles.font14PurpleMedium,
-      ),
+      child: Text(label, style: AppTextStyles.font14PurpleMedium),
     );
   }
 }
@@ -201,14 +234,13 @@ class _FeatureText extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.check_circle, color: AppColors.gradientBottom, size: 18),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              text,
-              style: AppTextStyles.font14w500Black,
-            ),
+          const Icon(
+            Icons.check_circle,
+            color: AppColors.gradientBottom,
+            size: 18,
           ),
+          const SizedBox(width: 10),
+          Expanded(child: Text(text, style: AppTextStyles.font14w500Black)),
         ],
       ),
     );
