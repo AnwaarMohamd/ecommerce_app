@@ -15,6 +15,10 @@ class AppTextFormField extends StatefulWidget {
   final Color? backgroundColor;
   final Widget? suffixIcon;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final int? maxLines;
   final String? Function(String?)? validator;
   final bool floatingLabel;
   final bool isEmailField;
@@ -33,6 +37,10 @@ class AppTextFormField extends StatefulWidget {
     this.suffixIcon,
     required this.hintText,
     this.controller,
+    this.focusNode,
+    this.keyboardType,
+    this.textInputAction,
+    this.maxLines = 1,
     this.validator, // ❌ مش required
     this.onChanged,
     this.isEmailField = false,
@@ -49,6 +57,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      focusNode: widget.focusNode,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      maxLines: widget.maxLines,
       autovalidateMode: AutovalidateMode.onUserInteraction,
 
       onChanged: (value) {
@@ -74,7 +86,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         enabledBorder: widget.enabledBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppColors.grey.withOpacity(0.6),
+                color: AppColors.grey.withAlpha(153),
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(18),
@@ -84,7 +96,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         focusedBorder: widget.focusedBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppColors.primary,
+                color: AppColors.primary.withAlpha(179),
                 width: 1.5,
               ),
               borderRadius: BorderRadius.circular(18),
@@ -104,7 +116,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         /// Hint
         hintStyle: widget.hintStyle ??
             TextStyle(
-              color: AppColors.greyDark.withOpacity(0.7),
+              color: AppColors.greyDark.withAlpha(179),
               fontSize: 14,
             ),
 

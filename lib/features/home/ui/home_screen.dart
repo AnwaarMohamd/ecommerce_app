@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routing/app_routes.dart';
 import 'package:ecommerce_app/core/theme/app_colors.dart';
 import 'package:ecommerce_app/features/home/data/home_data.dart';
 import 'package:ecommerce_app/features/home/ui/widgets/promo_info.dart';
@@ -26,6 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.white,
       bottomNavigationBar: const CustomBottomNav(),
       extendBody: true,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, AppRoutes.addProduct),
+        backgroundColor: AppColors.gradientBottom,
+        foregroundColor: AppColors.white,
+        elevation: 8,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         children: [
           Container(

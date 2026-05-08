@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final bool enabled;
   final Color? backgroundColor;
   final Color? textColor;
 
@@ -11,6 +12,7 @@ class AppButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.enabled = true,
     this.backgroundColor,
     this.textColor,
   });
@@ -21,19 +23,21 @@ class AppButton extends StatelessWidget {
       height: 55,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: enabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? AppColors.grey,
+          backgroundColor: enabled
+              ? (backgroundColor ?? AppColors.grey)
+              : AppColors.greyDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),
-          elevation: 4,
+          elevation: enabled ? 4 : 0,
         ),
         child: Text(
           text,
           style: TextStyle(
             fontSize: 18,
-            color: textColor ?? AppColors.orangeDark,
+            color: enabled ? (textColor ?? AppColors.orangeDark) : AppColors.white60,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -1,3 +1,8 @@
+import 'package:ecommerce_app/core/services/firestore_service.dart';
+import 'package:ecommerce_app/core/services/firebase_storage_service.dart';
+import 'package:ecommerce_app/features/add_product/data/repo/add_product_repo.dart';
+import 'package:ecommerce_app/features/add_product/logic/cubit/add_product_cubit.dart';
+import 'package:ecommerce_app/features/add_product/ui/add_product_page.dart';
 import 'package:ecommerce_app/features/home/data/product_model.dart';
 import 'package:ecommerce_app/features/home/ui/home_screen.dart';
 import 'package:ecommerce_app/features/home/ui/product_detail_screen.dart';
@@ -7,6 +12,7 @@ import 'package:ecommerce_app/features/signUp/ui/sign_up_screen.dart';
 import 'package:ecommerce_app/features/cart/ui/cart_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static String initialRoute() {
@@ -50,15 +56,31 @@ class AppRouter {
             description: product.description,
           ),
         );
+
+      case AppRoutes.addProduct:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => AddProductCubit(
+              AddProductRepository(
+                FirestoreService(),
+                FirebaseStorageService(),
+              ),
+            ),
+            child: const AddProductPage(),
+          ),
+        );
     }
 
     return null;
   }
-}class AppRoutes {
+}
+
+class AppRoutes {
   static const String onboarding = '/';
   static const String login = '/login';
   static const String signUp = '/sign-up';
   static const String home = '/home';
   static const String cart = '/cart';
   static const String productDetails = '/product-details';
+  static const String addProduct = '/add-product';
 }
